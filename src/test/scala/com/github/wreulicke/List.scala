@@ -153,4 +153,38 @@ object List{
     }
   }
 
+  //
+
+  @tailrec
+  def hasSubsequence[A](sup:List[A], sub:List[A]): Boolean = {
+    sub match {
+      case Nil => true
+      case Cons(x, xs) => {
+        sup match {
+          case Nil => false
+          case Cons(y, ys) =>
+            if (x == y) {
+              hasSubsequence(ys, xs) // List(1, 4, 2, 3), List(1, 2, 3)
+            } else {
+              hasSubsequence(ys, sub)
+            }
+        }
+      }
+    }
+  }
+
+  @tailrec
+  def hasSubsequence2[A](sup:List[A], sub:List[A]): Boolean = {
+    (sup, sub) match {
+      case (_, Nil) => true
+      case (Cons(x, xs), Cons(y, ys)) =>
+        if (x == y) {
+          hasSubsequence2(xs, ys)
+        } else {
+          hasSubsequence2(xs, sub)
+        }
+      case _ => false
+    }
+  }
+
 }

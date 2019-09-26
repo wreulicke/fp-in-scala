@@ -136,4 +136,27 @@ class ListTest extends FreeSpec {
       assert(List.filterViaFlatMap(List(1, 2, 3))(_ == 2) == List(2))
     }
   }
+
+  "Ex 3-24" - {
+    "hasSubsequence case1" in {
+      assert(List.hasSubsequence(List(1, 2, 3), List(2, 3)))
+    }
+
+    "hasSubsequence case2" in {
+      assert(List.hasSubsequence(List(1, 2, 3, 5), List(2, 3)))
+    }
+
+    "hasSubsequence case3" in {
+      assert(List.hasSubsequence(List(1, 4, 2, 3), List(1, 2, 3)))
+    }
+
+    "hasSubsequence2 case1" in {
+      assert(List.hasSubsequence2(List(1, 2, 3), List(2, 3)))
+    }
+
+    "hasSubsequence2 case2" in {
+      assert(List.hasSubsequence2(List(1, 2, 3, 5), List(2, 3)))
+    }
+  }
+
 }
